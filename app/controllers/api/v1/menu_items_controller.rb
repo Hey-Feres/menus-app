@@ -1,22 +1,24 @@
 # frozen_string_literal: true
 
 class Api::V1::MenuItemsController < ApplicationController
+  include RestaurantChildConcern
+
   before_action :set_menu
   before_action :set_menu_item, only: %i[show update destroy]
 
-  # GET menu/:menu_id/menu_items
+  # GET restaurant/:restaurant_id/menus/:menu_id/menu_items
   def index
     @menu_items = @menu.items
 
     render json: @menu_items
   end
 
-  # GET menu/:menu_id/menu_items/:id
+  # GET restaurant/:restaurant_id/menus/:menu_id/menu_items/:id
   def show
     render json: @menu_item
   end
 
-  # POST menu/:menu_id/menu_items
+  # POST restaurant/:restaurant_id/menus/:menu_id/menu_items
   def create
     @menu_item = @menu.items.new(menu_item_params)
 
@@ -27,7 +29,7 @@ class Api::V1::MenuItemsController < ApplicationController
     end
   end
 
-  # PATCH/PUT menu/:menu_id/menu_items/:id
+  # PATCH/PUT restaurant/:restaurant_id/menus/:menu_id/menu_items/:id
   def update
     if @menu_item.update(menu_item_params)
       render json: @menu_item
@@ -36,7 +38,7 @@ class Api::V1::MenuItemsController < ApplicationController
     end
   end
 
-  # DELETE menu/:menu_id/menu_items/:id
+  # DELETE restaurant/:restaurant_id/menus/:menu_id/menu_items/:id
   def destroy
     @menu_item.destroy
     head :no_content
@@ -51,7 +53,7 @@ class Api::V1::MenuItemsController < ApplicationController
   end
 
   def set_menu
-    @menu = Menu.find(params[:menu_id])
+    @menu = @restaurant.menus.find(params[:menu_id])
   rescue ActiveRecord::RecordNotFound
     render json: { error: 'Menu not found' }, status: :not_found
   end

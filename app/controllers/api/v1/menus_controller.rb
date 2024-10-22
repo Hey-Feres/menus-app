@@ -1,23 +1,25 @@
 # frozen_string_literal: true
 
 class Api::V1::MenusController < ApplicationController
+  include RestaurantChildConcern
+
   before_action :set_menu, only: %i[show update destroy]
 
-  # GET /menus
+  # GET restaurants/:restaurant_id/menus
   def index
-    @menus = Menu.all
+    @menus = @restaurant.menus
 
     render json: @menus
   end
 
-  # GET /menus/1
+  # GET restaurants/:restaurant_id/menus/:id
   def show
     render json: @menu
   end
 
-  # POST /menus
+  # POST restaurants/:restaurant_id/menus
   def create
-    @menu = Menu.new(menu_params)
+    @menu = @restaurant.menus.new(menu_params)
 
     if @menu.save
       render json: @menu, status: :created
@@ -26,7 +28,7 @@ class Api::V1::MenusController < ApplicationController
     end
   end
 
-  # PATCH/PUT /menus/1
+  # PATCH/PUT restaurants/:restaurant_id/menus/:id
   def update
     if @menu.update(menu_params)
       render json: @menu
@@ -35,7 +37,7 @@ class Api::V1::MenusController < ApplicationController
     end
   end
 
-  # DELETE /menus/1
+  # DELETE restaurants/:restaurant_id/menus/:id
   def destroy
     @menu.destroy
     head :no_content

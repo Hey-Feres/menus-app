@@ -3,12 +3,14 @@
 require 'rails_helper'
 
 RSpec.describe Api::V1::MenuItemsController, type: :controller do
-  let!(:menu) { create(:menu) }
-  let!(:menu_item) { create(:menu_item, menu: menu, price_cents: 1_000) }
+  let!(:restaurant) { create(:restaurant) }
+  let(:restaurant_id) { restaurant.id }
+  let!(:menu) { create(:menu, restaurant:) }
+  let!(:menu_item) { create(:menu_item, menu:, price_cents: 1_000) }
 
   describe 'GET #index' do
     context 'with a menu item that exists' do
-      before { get :index, params: { menu_id: menu.id } }
+      before { get :index, params: { restaurant_id:, menu_id: menu.id } }
 
       it 'returns a success status' do
         expect(response).to have_http_status(:success)
@@ -23,12 +25,12 @@ RSpec.describe Api::V1::MenuItemsController, type: :controller do
       end
 
       it 'returns the related menu' do
-        expect(JSON.parse(response.body).first['menu']).to eq(menu.as_json)
+        expect(JSON.parse(response.body).first['menu']).to eq(menu.as_json.except('restaurant_id'))
       end
     end
 
     context 'with a menu that does not exists' do
-      before { get :index, params: { menu_id: 100 } }
+      before { get :index, params: { restaurant_id:, menu_id: 100 } }
 
       it 'returns status not_found' do
         expect(response).to have_http_status(:not_found)
@@ -42,7 +44,7 @@ RSpec.describe Api::V1::MenuItemsController, type: :controller do
 
   describe 'GET #show' do
     context 'with a menu item that exists' do
-      before { get :show, params: { menu_id: menu.id, id: menu_item.id } }
+      before { get :show, params: { restaurant_id:, menu_id: menu.id, id: menu_item.id } }
 
       it 'returns a success response' do
         expect(response).to have_http_status(:success)
@@ -57,12 +59,12 @@ RSpec.describe Api::V1::MenuItemsController, type: :controller do
       end
 
       it 'returns the related menu' do
-        expect(JSON.parse(response.body)['menu']).to eq(menu.as_json)
+        expect(JSON.parse(response.body)['menu']).to eq(menu.as_json.except('restaurant_id'))
       end
     end
 
     context 'with a menu item that does not exists' do
-      before { get :show, params: { menu_id: menu.id, id: 100 } }
+      before { get :show, params: { restaurant_id:, menu_id: menu.id, id: 100 } }
 
       it 'returns status not_found' do
         expect(response).to have_http_status(:not_found)
@@ -74,7 +76,7 @@ RSpec.describe Api::V1::MenuItemsController, type: :controller do
     end
 
     context 'with a menu that does not exists' do
-      before { get :show, params: { menu_id: 100, id: menu_item.id } }
+      before { get :show, params: { restaurant_id:, menu_id: 100, id: menu_item.id } }
 
       it 'returns status not_found' do
         expect(response).to have_http_status(:not_found)
@@ -90,7 +92,7 @@ RSpec.describe Api::V1::MenuItemsController, type: :controller do
     context 'with valid attributes' do
       let(:valid_attributes) { { name: 'New Item', price_cents: 1000, quantity: '500g', description: 'Delicious' } }
 
-      subject { post :create, params: { menu_id: menu.id, menu_item: valid_attributes } }
+      subject { post :create, params: { restaurant_id:, menu_id: menu.id, menu_item: valid_attributes } }
 
       it 'returns status created' do
         subject
@@ -103,7 +105,7 @@ RSpec.describe Api::V1::MenuItemsController, type: :controller do
     end
 
     context 'with invalid attributes' do
-      subject { post :create, params: { menu_id: menu.id, menu_item: { name: '', price_cents: nil } } }
+      subject { post :create, params: { restaurant_id:, menu_id: menu.id, menu_item: { name: '', price_cents: nil } } }
 
       it 'does not add a new Menu Item' do
         expect { subject }.not_to change(MenuItem, :count)
@@ -118,7 +120,7 @@ RSpec.describe Api::V1::MenuItemsController, type: :controller do
 
   describe 'PATCH #update' do
     context 'with valid attributes' do
-      subject { patch :update, params: { menu_id: menu.id, id: menu_item.id, menu_item: { name: 'Updated Item' } } }
+      subject { patch :update, params: { restaurant_id:, menu_id: menu.id, id: menu_item.id, menu_item: { name: 'Updated Item' } } }
 
       it 'returns success status' do
         subject
@@ -131,7 +133,7 @@ RSpec.describe Api::V1::MenuItemsController, type: :controller do
     end
 
     context 'with invalid attributes' do
-      subject { patch :update, params: { menu_id: menu.id, id: menu_item.id, menu_item: { price_cents: nil } } }
+      subject { patch :update, params: { restaurant_id:, menu_id: menu.id, id: menu_item.id, menu_item: { price_cents: nil } } }
 
       it 'returns unprocessable entity when invalid' do
         subject
@@ -146,7 +148,7 @@ RSpec.describe Api::V1::MenuItemsController, type: :controller do
 
   describe 'DELETE #destroy' do
     context 'with a object that exists' do
-      subject { delete :destroy, params: { menu_id: menu.id, id: menu_item.id }}
+      subject { delete :destroy, params: { restaurant_id:, menu_id: menu.id, id: menu_item.id }}
 
       it 'deletes a menu item' do
         expect { subject }.to change(MenuItem, :count).by(-1)
@@ -159,7 +161,7 @@ RSpec.describe Api::V1::MenuItemsController, type: :controller do
     end
 
     context 'with a menu item that does not exists' do
-      subject { delete :destroy, params: { menu_id: menu.id, id: 100 }}
+      subject { delete :destroy, params: { restaurant_id:, menu_id: menu.id, id: 100 }}
 
       it 'returns status not_found' do
         subject
@@ -173,7 +175,7 @@ RSpec.describe Api::V1::MenuItemsController, type: :controller do
     end
 
     context 'with a menu that does not exists' do
-      subject { delete :destroy, params: { menu_id: 100, id: menu_item.id }}
+      subject { delete :destroy, params: { restaurant_id:, menu_id: 100, id: menu_item.id }}
 
       it 'returns status not_found' do
         subject
