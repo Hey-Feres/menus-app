@@ -40,6 +40,19 @@ class Api::V1::RestaurantsController < ApplicationController
     @restaurant.destroy
   end
 
+  def import
+    result = Restaurant::Importer.new(params[:file]).call
+    render json: result
+  end
+
+  def import_options
+    render json: {
+      title: 'Import Restaurant Data Endpoint',
+      allowed_methods: ['POST', 'OPTIONS'],
+      description: "This endpoint allows you to import restaurants data from a JSON file.\n\nThe expected structure is { restaurants: [{ name: 'Restaurant Name', menus: [{ name: 'Menu Name', menu_items: [{ name: 'Item Name', price: 10 }] }]}] }"
+    }, status: :ok
+  end
+
   private
 
   def set_restaurant
