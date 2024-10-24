@@ -1,0 +1,702 @@
+{
+  "info": {
+    "name": "Menus",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Restaurants",
+      "item": [
+        {
+          "name": "Index",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "http://localhost:3000/api/v1/restaurants",
+              "query": null,
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "v1",
+                "restaurants"
+              ]
+            },
+            "description": "",
+            "header": [],
+            "body": null,
+            "auth": null
+          },
+          "protocolProfileBehavior": {
+            "followRedirects": false,
+            "followOriginalHttpMethod": false,
+            "followAuthorizationHeader": false
+          },
+          "response": []
+        },
+        {
+          "name": "Show",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "http://localhost:3000/api/v1/restaurants/1",
+              "query": null,
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "v1",
+                "restaurants",
+                "1"
+              ]
+            },
+            "description": "",
+            "header": [],
+            "body": null,
+            "auth": null
+          },
+          "protocolProfileBehavior": {
+            "followRedirects": false,
+            "followOriginalHttpMethod": false,
+            "followAuthorizationHeader": false
+          },
+          "response": []
+        },
+        {
+          "name": "Create",
+          "request": {
+            "method": "POST",
+            "url": {
+              "raw": "http://localhost:3000/api/v1/restaurants",
+              "query": null,
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "v1",
+                "restaurants"
+              ]
+            },
+            "description": "",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "disabled": false,
+                "description": null
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "disabled": false,
+              "raw": "{\n  \"restaurant\": {\n    \"name\": \"Restaurant\"\n  }\n}"
+            },
+            "auth": null
+          },
+          "protocolProfileBehavior": {
+            "followRedirects": false,
+            "followOriginalHttpMethod": false,
+            "followAuthorizationHeader": false
+          },
+          "response": []
+        },
+        {
+          "name": "Update",
+          "request": {
+            "method": "PUT",
+            "url": {
+              "raw": "http://localhost:3000/api/v1/restaurants/3",
+              "query": null,
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "v1",
+                "restaurants",
+                "3"
+              ]
+            },
+            "description": "",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "disabled": false,
+                "description": null
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "disabled": false,
+              "raw": "{\n  \"restaurant\": {\n    \"name\": \"Restaurant 3\"\n  }\n}"
+            },
+            "auth": null
+          },
+          "protocolProfileBehavior": {
+            "followRedirects": false,
+            "followOriginalHttpMethod": false,
+            "followAuthorizationHeader": false
+          },
+          "response": []
+        },
+        {
+          "name": "Destroy",
+          "request": {
+            "method": "DELETE",
+            "url": {
+              "raw": "http://localhost:3000/api/v1/restaurants/4",
+              "query": null,
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "v1",
+                "restaurants",
+                "4"
+              ]
+            },
+            "description": "",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "disabled": false,
+                "description": null
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "disabled": false,
+              "raw": ""
+            },
+            "auth": null
+          },
+          "protocolProfileBehavior": {
+            "followRedirects": false,
+            "followOriginalHttpMethod": false,
+            "followAuthorizationHeader": false
+          },
+          "response": []
+        },
+        {
+          "name": "Import",
+          "request": {
+            "method": "POST",
+            "url": {
+              "raw": "http://localhost:3000/api/v1/restaurants/import",
+              "query": null,
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "v1",
+                "restaurants",
+                "import"
+              ]
+            },
+            "description": "",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "multipart/form-data; boundary=TmLsfH2YNJ0BVWGa7kFFfCjoE7aId8OW",
+                "disabled": false,
+                "description": null
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "disabled": false,
+              "formdata": [
+                {
+                  "key": "file",
+                  "disabled": false,
+                  "type": "file",
+                  "description": null,
+                  "src": null
+                }
+              ]
+            },
+            "auth": null
+          },
+          "protocolProfileBehavior": {
+            "followRedirects": false,
+            "followOriginalHttpMethod": false,
+            "followAuthorizationHeader": false
+          },
+          "response": []
+        },
+        {
+          "name": "Import Options",
+          "request": {
+            "method": "OPTIONS",
+            "url": {
+              "raw": "http://localhost:3000/api/v1/restaurants/import",
+              "query": null,
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "v1",
+                "restaurants",
+                "import"
+              ]
+            },
+            "description": "",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "multipart/form-data; boundary=J5I22taVsdsKuvbgCPvGVMD5upB5qrxN",
+                "disabled": false,
+                "description": null
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "disabled": false,
+              "raw": ""
+            },
+            "auth": null
+          },
+          "protocolProfileBehavior": {
+            "followRedirects": false,
+            "followOriginalHttpMethod": false,
+            "followAuthorizationHeader": false
+          },
+          "response": []
+        }
+      ],
+      "protocolProfileBehavior": null,
+      "response": []
+    },
+    {
+      "name": "Menu",
+      "item": [
+        {
+          "name": "Index",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "http://localhost:3000/api/v1/restaurants/1/menus",
+              "query": null,
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "v1",
+                "restaurants",
+                "1",
+                "menus"
+              ]
+            },
+            "description": "",
+            "header": [],
+            "body": null,
+            "auth": null
+          },
+          "protocolProfileBehavior": {
+            "followRedirects": false,
+            "followOriginalHttpMethod": false,
+            "followAuthorizationHeader": false
+          },
+          "response": []
+        },
+        {
+          "name": "Show",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "http://localhost:3000/api/v1/restaurants/1/menus/2",
+              "query": null,
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "v1",
+                "restaurants",
+                "1",
+                "menus",
+                "2"
+              ]
+            },
+            "description": "",
+            "header": [],
+            "body": null,
+            "auth": null
+          },
+          "protocolProfileBehavior": {
+            "followRedirects": false,
+            "followOriginalHttpMethod": false,
+            "followAuthorizationHeader": false
+          },
+          "response": []
+        },
+        {
+          "name": "Create",
+          "request": {
+            "method": "POST",
+            "url": {
+              "raw": "http://localhost:3000/api/v1/restaurants/1/menus",
+              "query": null,
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "v1",
+                "restaurants",
+                "1",
+                "menus"
+              ]
+            },
+            "description": "",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "disabled": false,
+                "description": null
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "disabled": false,
+              "raw": "{\n  \"menu\": {\n    \"name\": \"Menu Name\",\n    \"menu_items_attributes\": [\n      {\n        \"name\": \"Ceaser Salad\",\n        \"price_cents\": 900,\n        \"quantity\": \"400g\",\n        \"description\": \"Lorem Ipsum\"\n      },\n      {\n        \"name\": \"Pasta\",\n        \"price_cents\": 1200,\n        \"quantity\": \"400g\",\n        \"description\": \"Lorem Ipsum\"\n      },\n      {\n        \"name\": \"Cheeseburger\",\n        \"price_cents\": 1500,\n        \"quantity\": \"700g\",\n        \"description\": \"Lorem Ipsum\"\n      },\n      {\n        \"name\": \"Mac n Cheese\",\n        \"price_cents\": 1200,\n        \"quantity\": \"400g\",\n        \"description\": \"Lorem Ipsum\"\n      }\n    ]\n  }\n}"
+            },
+            "auth": null
+          },
+          "protocolProfileBehavior": {
+            "followRedirects": false,
+            "followOriginalHttpMethod": false,
+            "followAuthorizationHeader": false
+          },
+          "response": []
+        },
+        {
+          "name": "Update",
+          "request": {
+            "method": "PUT",
+            "url": {
+              "raw": "http://localhost:3000/api/v1/restaurants/1/menus/2",
+              "query": null,
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "v1",
+                "restaurants",
+                "1",
+                "menus",
+                "2"
+              ]
+            },
+            "description": "",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "disabled": false,
+                "description": null
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "disabled": false,
+              "raw": "{\n  \"menu\": {\n    \"name\": \"Menu Name\",\n    \"menu_items_attributes\": [\n      {\n        \"name\": \"Ceaser Salad\",\n        \"price_cents\": 900,\n        \"quantity\": \"400g\",\n        \"description\": \"Lorem Ipsum\"\n      },\n      {\n        \"name\": \"Pasta\",\n        \"price_cents\": 1200,\n        \"quantity\": \"400g\",\n        \"description\": \"Lorem Ipsum\"\n      },\n      {\n        \"name\": \"Cheeseburger\",\n        \"price_cents\": 1500,\n        \"quantity\": \"700g\",\n        \"description\": \"Lorem Ipsum\"\n      },\n      {\n        \"name\": \"Mac n Cheese\",\n        \"price_cents\": 1200,\n        \"quantity\": \"400g\",\n        \"description\": \"Lorem Ipsum\"\n      }\n    ]\n  }\n}"
+            },
+            "auth": null
+          },
+          "protocolProfileBehavior": {
+            "followRedirects": false,
+            "followOriginalHttpMethod": false,
+            "followAuthorizationHeader": false
+          },
+          "response": []
+        },
+        {
+          "name": "Destroy",
+          "request": {
+            "method": "DELETE",
+            "url": {
+              "raw": "http://localhost:3000/api/v1/restaurants/1/menus/2",
+              "query": null,
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "v1",
+                "restaurants",
+                "1",
+                "menus",
+                "2"
+              ]
+            },
+            "description": "",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "disabled": false,
+                "description": null
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "disabled": false,
+              "raw": "{\n  \"menu\": {\n    \"name\": \"Menu Name\",\n    \"menu_items_attributes\": [\n      {\n        \"name\": \"Ceaser Salad\",\n        \"price_cents\": 900,\n        \"quantity\": \"400g\",\n        \"description\": \"Lorem Ipsum\"\n      },\n      {\n        \"name\": \"Pasta\",\n        \"price_cents\": 1200,\n        \"quantity\": \"400g\",\n        \"description\": \"Lorem Ipsum\"\n      },\n      {\n        \"name\": \"Cheeseburger\",\n        \"price_cents\": 1500,\n        \"quantity\": \"700g\",\n        \"description\": \"Lorem Ipsum\"\n      },\n      {\n        \"name\": \"Mac n Cheese\",\n        \"price_cents\": 1200,\n        \"quantity\": \"400g\",\n        \"description\": \"Lorem Ipsum\"\n      }\n    ]\n  }\n}"
+            },
+            "auth": null
+          },
+          "protocolProfileBehavior": {
+            "followRedirects": false,
+            "followOriginalHttpMethod": false,
+            "followAuthorizationHeader": false
+          },
+          "response": []
+        }
+      ],
+      "protocolProfileBehavior": null,
+      "response": []
+    },
+    {
+      "name": "Menu Items",
+      "item": [
+        {
+          "name": "Index",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "http://localhost:3000/api/v1/restaurants/1/menus/1/menu_items",
+              "query": null,
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "v1",
+                "restaurants",
+                "1",
+                "menus",
+                "1",
+                "menu_items"
+              ]
+            },
+            "description": "",
+            "header": [],
+            "body": null,
+            "auth": null
+          },
+          "protocolProfileBehavior": {
+            "followRedirects": false,
+            "followOriginalHttpMethod": false,
+            "followAuthorizationHeader": false
+          },
+          "response": []
+        },
+        {
+          "name": "Show",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "http://localhost:3000/api/v1/restaurants/1/menus/1/menu_items/1",
+              "query": null,
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "v1",
+                "restaurants",
+                "1",
+                "menus",
+                "1",
+                "menu_items",
+                "1"
+              ]
+            },
+            "description": "",
+            "header": [],
+            "body": null,
+            "auth": null
+          },
+          "protocolProfileBehavior": {
+            "followRedirects": false,
+            "followOriginalHttpMethod": false,
+            "followAuthorizationHeader": false
+          },
+          "response": []
+        },
+        {
+          "name": "Create",
+          "request": {
+            "method": "POST",
+            "url": {
+              "raw": "http://localhost:3000/api/v1/restaurants/1/menus/1/menu_items",
+              "query": null,
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "v1",
+                "restaurants",
+                "1",
+                "menus",
+                "1",
+                "menu_items"
+              ]
+            },
+            "description": "",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "disabled": false,
+                "description": null
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "disabled": false,
+              "raw": "{\n  \"menu_item\": {\n    \"name\": \"Cheeseburger with bacon\",\n    \"price_cents\": 900,\n    \"quantity\": \"400g\",\n    \"description\": \"Delicious cheeseburger\"\n  }\n}"
+            },
+            "auth": null
+          },
+          "protocolProfileBehavior": {
+            "followRedirects": false,
+            "followOriginalHttpMethod": false,
+            "followAuthorizationHeader": false
+          },
+          "response": []
+        },
+        {
+          "name": "Update",
+          "request": {
+            "method": "PUT",
+            "url": {
+              "raw": "http://localhost:3000/api/v1/restaurants/1/menus/1/menu_items/18",
+              "query": null,
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "v1",
+                "restaurants",
+                "1",
+                "menus",
+                "1",
+                "menu_items",
+                "18"
+              ]
+            },
+            "description": "",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "disabled": false,
+                "description": null
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "disabled": false,
+              "raw": "{\n  \"menu_item\": {\n    \"name\": \"Cheeseburger with bacon & salad\",\n    \"price_cents\": 900,\n    \"quantity\": \"400g\",\n    \"description\": \"Delicious cheeseburger\"\n  }\n}"
+            },
+            "auth": null
+          },
+          "protocolProfileBehavior": {
+            "followRedirects": false,
+            "followOriginalHttpMethod": false,
+            "followAuthorizationHeader": false
+          },
+          "response": []
+        },
+        {
+          "name": "Destroy",
+          "request": {
+            "method": "DELETE",
+            "url": {
+              "raw": "http://localhost:3000/api/v1/restaurants/1/menus/1/menu_items/18",
+              "query": null,
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "v1",
+                "restaurants",
+                "1",
+                "menus",
+                "1",
+                "menu_items",
+                "18"
+              ]
+            },
+            "description": "",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "disabled": false,
+              "raw": "{\n  \"menu_item\": {\n    \"name\": \"Cheeseburger with bacon & salad\",\n    \"price_cents\": 900,\n    \"quantity\": \"400g\",\n    \"description\": \"Delicious cheeseburger\"\n  }\n}"
+            },
+            "auth": null
+          },
+          "protocolProfileBehavior": {
+            "followRedirects": false,
+            "followOriginalHttpMethod": false,
+            "followAuthorizationHeader": false
+          },
+          "response": []
+        }
+      ],
+      "protocolProfileBehavior": null,
+      "response": []
+    }
+  ]
+}
